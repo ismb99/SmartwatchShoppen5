@@ -1,0 +1,63 @@
+﻿@model ShoppingCart
+
+
+
+<div class="container pt-5">
+
+
+<form method="post">
+    <div class="p-4 rounded border row">
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+        </div>
+        <div class="col-8 ">
+            <div class="form-group row pt-3">
+                <div class="col-4">
+                    <label asp-for="@Model.Product.Name"></label>
+                </div>
+                <div class="col-8">
+                    <input type="hidden" asp-for="Id" />
+                    <p> @Model.Product.Name</p>
+                </div>
+                <span asp-validation-for="@Model.Product.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group row pt-3">
+                <div class="col-4">
+                    <label asp-for="@Model.Product.Brand"></label>
+                </div>
+                <div class="col-8">
+                    <p> @Model.Product.Brand</p>
+                </div>
+                <span asp-validation-for="@Model.Product.Brand" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row pt-3">
+                <div class="col-4">
+                    <label asp-for="@Model.Product.Price"></label>
+                </div>
+                <div class="col-8">
+                        <p> @Model.Product.Price.ToString("c")</p>
+                </div>
+                <span asp-validation-for="@Model.Product.Price" class="text-danger"></span>
+            </div>
+          
+            <div class="form-group row pt-3">
+                <div class="col-2">
+                    <p>Qty:</p>
+                    </div>
+                <div class="col-10"><input asp-for="Amount" class="form-control" /></div>
+            </div>
+
+        </div>
+
+        <div class="col-3 m-5">
+            <img src="@Model.Product.ImageUrl" width="100%" height="250px" style="border-radius: 5px;border: 1px solid #efefef" />
+        </div>
+             <div class="col-4 col-md-6 ">
+                 <a class="btn btn-primary form-control" style="height:50px;" asp-action="Index">Hem</a>
+            </div>
+            <div class="col-4 col-md-6 ">
+                <button type="submit" value="Add to Cart" class="btn btn-success form-control" style="height:50px;">LÄGG I VARUKORGEN</button>
+            </div>
+    </div>
+</form>
+</div>
