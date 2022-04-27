@@ -27,7 +27,7 @@
                 <div class="collapse navbar-collapse" id="navbarColor01">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Hem</a>
                         </li>
 
                   
@@ -36,14 +36,14 @@
                         {
 
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="Admin" asp-controller="Product" asp-action="Index">Product</a>
+                                <a class="nav-link" asp-area="Admin" asp-controller="Product" asp-action="Index">Produkter</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="Admin" asp-controller="Order" asp-action="Index">Beställningar</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="Identity" asp-page="/Account/Register">Create User</a>
+                                <a class="nav-link" asp-area="Identity" asp-page="/Account/Register">Skapa ny användare</a>
                             </li>
                         }
 
@@ -81,6 +81,8 @@
             crossorigin="anonymous"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script src="https://cdn.tiny.cloud/1/e1r49v6pgwh47bmev37udm66sgsl8on1fy82ic6x49jj276l/tinymce/6/tinymce.min.js" referrerpolicy="origin">
+          </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

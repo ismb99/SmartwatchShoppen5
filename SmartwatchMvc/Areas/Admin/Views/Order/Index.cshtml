@@ -5,14 +5,12 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Id </th>
-                <th>Name</th>
+                <th>Namn</th>
                 <th>Adress</th>
                 <th>Stad</th>
                 <th>Postort</th>
                 <th>Telnr</th>
-                <th>Order Status</th>
-                <th>Kostnad</th>
+                <th>kostnad</th>
                 <th></th>
             </tr>
         </thead>
@@ -21,14 +19,12 @@
             {
 
                 <tr>
-                    <td>@item.Id</td>
                     <td>@item.Name</td>
                     <td>@item.StreetAdress</td>
                     <td>@item.City</td>
                     <td>@item.PostTown</td>
                     <td>@item.PhoneNumber</td>
-                    <td>@item.OrderStatus</td>
-                    <td>@item.OrderTotal</td>
+                    <td>@item.OrderTotal.ToString("c")</td>
                     
 
                     <td>
