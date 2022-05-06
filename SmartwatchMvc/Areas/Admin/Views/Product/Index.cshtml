@@ -1,36 +1,38 @@
 ﻿@model IEnumerable<Product>
 
-<div class="container">
-
+<div class="container ">
+    <div class=" row m-2">
+          <h2 class="text-primary">Produkter</h2>
+    </div>
     <div class="row col-3 m-3">
         <a asp-controller="Product" asp-action="CreateOrUpdate" class="btn btn-success">
             Lägg till ny produkt
         </a>
     </div>
 
-    <table class="table  table-striped">
+    <table class="table table-hover table-striped">
         <thead>
             <tr>
-                <th>Namn</th>
-                <th>Märke</th>
-                <th>Pris</th>
-                <th></th>
+                <th style="width: 25%">Namn</th>
+                <th style="width: 25%">Märke</th>
+                <th style="width: 25%">Pris</th>
+                <th style="width: 25%">Ta bort eller uppdatera</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
+                <tr class="table-primary">
                     <td>@item.Name</td>
                     <td>@item.Brand</td>
                     <td>@item.Price.ToString("c")</td>
                     <td>
                         <div class="w-25 btn-group text-right" role="group">
-                            <div class="mx-2">
-                                   <a asp-controller="Product" asp-action="CreateOrUpdate" asp-route-id="@item.Id" class="btn btn-success">Updatera</a>
+                            <div class="mx-3">
+                                   <a asp-controller="Product" asp-action="CreateOrUpdate" asp-route-id="@item.Id" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
                             </div>
-                            <div class="mx-2">
-                            <a asp-controller="Product" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Radera</a>
+                            <div class="mx-3">
+                            <a asp-controller="Product" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger"><i class="bi bi-trash"></i></a>
 
                             </div>
                          

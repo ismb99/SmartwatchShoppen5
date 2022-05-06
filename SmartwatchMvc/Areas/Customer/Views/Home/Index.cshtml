@@ -1,12 +1,11 @@
 ﻿@model IEnumerable<Product>
 
 
-
 <div class="container">
     <div class="row p-3">
         @foreach (var product in Model)
         {
-            <div class="col-12 col-md-6 col-lg-3 mb-4">
+            <div class="col-8 col-md-6 col-lg-3 mb-4" >
                 <div class="card">
                     <img class="card-img-top" src="@product.ImageUrl" />
                     <div class="card-body">
@@ -16,13 +15,9 @@
                 <div>
                     <a asp-action="info" class="btn btn-primary form-control mt-2" asp-route-productId="@product.Id">
                         <strong>Läs mer</strong>
-
                     </a>
                 </div>
-               
             </div>
-
-
         }
     </div>
 </div>

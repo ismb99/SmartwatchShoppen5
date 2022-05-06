@@ -152,8 +152,7 @@ namespace SmartwatchMvc.Areas.Identity.Pages.Account
                 user.StreetAdress = Input.StreetAdress;
                 user.PostTown = Input.PostTown;
                 user.PhoneNumber = Input.PhoneNumber;
-
-
+                    
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)

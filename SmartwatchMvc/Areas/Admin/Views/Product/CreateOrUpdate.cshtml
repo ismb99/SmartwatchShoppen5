@@ -6,86 +6,77 @@
     <input asp-for="ImageUrl" hidden />
     <div class="row">
 
+        <div class="m-3 p-3">
+            <div>
+                <h2 class="text-primary">@(Model.Id!=0?"Uppdatera": "Skapa")  Produkt</h2>
+                <hr />
+            </div>
 
-    <div class="m-3 p-3">
-        <div>
-            <h2 class="text-primary">@(Model.Id!=0?"Uppdatera": "Skapa")  Produkt</h2>
-            <hr />
-        </div>
-     
-        <div class="m-3">
-            <label asp-for="Name"></label>
-            <input asp-for="Name" class="form-control" />
-            <span asp-validation-for="Name" class="text-danger"></span>
-        </div>
-        <div class="m-3">
-            <label asp-for="Brand"></label>
-            <input asp-for="Brand" class="form-control" />
-            <span asp-validation-for="Brand" class="text-danger"></span>
-        </div>
-        <div class="m-3">
-            <label asp-for="Description"></label>
-            <textarea asp-for="Description" class="form-control" rows="5" style="height: 100%"></textarea>
-            <span asp-validation-for="Description" class="text-danger"></span>
-        </div>
-        <div class="m-3">
-            <label asp-for="Price"></label>
-            <input asp-for="Price" class="form-control" />
-            <span asp-validation-for="Price" class="text-danger"></span>
-        </div>
-        <div class="m-3">
-            <label asp-for="ImageUrl"></label>
-            <input type="file" id="loadImage" name="file" class="form-control" />
-        </div>
+            <div class="m-3">
+                <label asp-for="Name">Modell</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="m-3">
+                <label asp-for="Brand">Märke</label>
+                <input asp-for="Brand" class="form-control" />
+                <span asp-validation-for="Brand" class="text-danger"></span>
+            </div>
+            <div class="m-3">
+                <label asp-for="Description">Beskrivning</label>
+                <textarea  id="summernote" name="editordata" asp-for="Description" class="form-control" rows="5" style="height: 100%"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="m-3">
+                <label asp-for="Price">Pris</label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="m-3">
+                <label asp-for="ImageUrl">Bild</label>
+                <input type="file" id="loadImage" name="file" class="form-control" />
+            </div>
 
-  
-      
+            <div class="col-12">
+                @if (Model.Id != 0)
+                {
+                    <button type="submit" class="btn btn-success" style="width:150px">Uppdatera</button>
+                }
+                else
+                {
+                    <button type="submit" onclick="return ValidateInput()" class="btn btn-success" style="width:150px">Skapa</button>
+                }
+                <a asp-controller="Product" asp-action="Index" class="btn btn-info" style="width:150px">
+                    Tillbaka
+                </a>
+            </div>
 
-        <div class="col-12">
-            @if (Model.Id != 0)
-            {
-                <button type="submit" class="btn btn-success" style="width:150px">Uppdatera</button>
-            }
-            else
-            {
-                <button type="submit" onclick="return ValidateInput()" class="btn btn-success" style="width:150px">Skapa</button>
-            }
-            <a asp-controller="Product" asp-action="Index" class="btn btn-info" style="width:150px">
-                Tillbaka
-            </a>
         </div>
-
     </div>
-        </div>
 </form>
 
 @section Scripts{
      @{
     <partial name="_ValidationScriptsPartial" />
      }
-      <script>
-    tinymce.init({
-      selector: 'textarea',
-      plugins: 'a11ychecker advcode casechange export formatpainter image editimage linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tableofcontents tinycomments tinymcespellchecker',
-      toolbar: 'a11ycheck addcomment showcomments casechange checklist code export formatpainter image editimage pageembed permanentpen table tableofcontents',
-      toolbar_mode: 'floating',
-      tinycomments_mode: 'embedded',
-      tinycomments_author: 'Author name',
-    });
 
-
-  </script>
 <script>
     function ValidateInput(){
         if(document.getElementById("loadImage").value==""){
             Swal.fire({
              icon: 'error',
              title: 'Oops...',
-             text: 'Upload img',
+             text: 'Lägg till en bild',
            });
            return false;
         }
         return true;
     }
 </script>
+
+ <script>
+    $(document).ready(function() {
+        $('#summernote').summernote();
+    });
+  </script>
  }

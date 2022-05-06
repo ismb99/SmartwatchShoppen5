@@ -1,8 +1,10 @@
 ﻿@model IEnumerable<OrderHeader>
 
 <div class="container p-5">
-
-    <table class="table table-striped">
+    <div class="m-3">
+        <h2 class="text-primary">Order historik</h2>
+    </div>
+    <table class="table table-hover table-striped">
         <thead>
             <tr>
                 <th>Namn</th>
@@ -18,14 +20,14 @@
             @foreach (var item in Model)
             {
 
-                <tr>
+                <tr class="table-primary">
                     <td>@item.Name</td>
                     <td>@item.StreetAdress</td>
                     <td>@item.City</td>
                     <td>@item.PostTown</td>
                     <td>@item.PhoneNumber</td>
                     <td>@item.OrderTotal.ToString("c")</td>
-                    
+
 
                     <td>
                         <div class="w-75 btn-group" role="group">

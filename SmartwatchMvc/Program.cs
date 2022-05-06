@@ -17,7 +17,6 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("DbConnection")))
 builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Stripe"));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IUserDbInitializer, UserDbInitializer>();
-
 builder.Services.AddScoped<IEmailSender, EmailSender>();
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddDefaultTokenProviders()
@@ -38,6 +37,8 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
+
+
 
 
 var app = builder.Build();

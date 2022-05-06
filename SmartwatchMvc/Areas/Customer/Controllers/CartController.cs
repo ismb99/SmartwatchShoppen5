@@ -22,6 +22,7 @@ namespace SmartwatchMvc.Areas.Customer.Controllers
             _unitOfWork = unitOfWork;
         }
 
+        // GET
         public IActionResult Index()
         {
             var claimsIdentity = (ClaimsIdentity)User.Identity;
@@ -41,6 +42,7 @@ namespace SmartwatchMvc.Areas.Customer.Controllers
             return View(shoppingCartVm);
         }
 
+        // GET
         public IActionResult Checkout()
         {
             var claimsIdentity = (ClaimsIdentity)User.Identity;
@@ -78,11 +80,12 @@ namespace SmartwatchMvc.Areas.Customer.Controllers
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
 
-            ShoppingCartVM.ListCart = _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == claim.Value,
+            ShoppingCartVM.ListCart = _unitOfWork.ShoppingCart.
+                GetAll(u => u.ApplicationUserId == claim.Value,
                 includeProperties: "Product");
 
           
-            ShoppingCartVM.OrderHeader.OrderDate = System.DateTime.Now;
+            ShoppingCartVM.OrderHeader.OrderDate = DateTime.Now;
             ShoppingCartVM.OrderHeader.ApplicationUserId = claim.Value;
            
 
@@ -107,9 +110,10 @@ namespace SmartwatchMvc.Areas.Customer.Controllers
                 _unitOfWork.Save();
             }
 
-
             // Stripe Settings
-            var domain = "https://localhost:7049/";
+            //var domain = "https://localhost:7049/"; 
+            var domain = "https://smartwatchshoppen.azurewebsites.net/";
+
             var options = new SessionCreateOptions
             {
                 LineItems = new List<SessionLineItemOptions>(),
@@ -167,8 +171,7 @@ namespace SmartwatchMvc.Areas.Customer.Controllers
             _unitOfWork.Save();
             return View(id);
 
-            //ShoppingCartVM.OrderHeader.SessionID = session.Id;
-            //ShoppingCartVM.OrderHeader.PaymentIntentId = session.PaymentIntentId;
+          
 
         }
 

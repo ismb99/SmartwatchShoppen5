@@ -27,8 +27,6 @@ namespace Data_Access_Layer.Repository
                 productFromDb.Description = product.Description;
                 productFromDb.Price = product.Price;
                 productFromDb.Brand = product.Brand;
-                //productFromDb.CategoryId = product.CategoryId;
-                //productFromDb.WristbandId = product.WristbandId;
 
                 if(product.ImageUrl != null)
                 {
